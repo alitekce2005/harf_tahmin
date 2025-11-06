@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/images-Photoroom.png" type="image/png">
+    <title>🔤 Kelime Tahmin Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="floating-letters" id="floatingLetters"></div>
+
+    <div class="theme-switcher">
+        <button class="theme-btn active" onclick="switchTheme('theme2')" title="Tema 2">🌙</button>
+        <button class="theme-btn" onclick="switchTheme('theme1')" title="Tema 1">🎨</button>
+    </div>
+
+    <div class="container">
+        <button class="reset-btn" onclick="resetGame()" title="Oyunu Sıfırla">🔄</button>
+        <button class="settings-btn" onclick="openSettings()" title="Ayarlar">⚙️</button>
+
+        <div class="header">
+            <div class="title">🔤 Kelime Tahmin</div>
+            <div class="subtitle">Harfleri Bul, Kelimeyi Çöz</div>
+            <div class="word-length-info" id="wordLengthInfo">📏 Kelime: 0 Harf</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="categoryDisplay">Kategori</div>
+                <div class="stat-label">Seçili Kategori</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="difficultyDisplay">Normal</div>
+                <div class="stat-label">Zorluk Seviyesi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="foundCount">0</div>
+                <div class="stat-label">Bulunan Kelime</div>
+            </div>
+        </div>
+
+        <div class="word-display" id="wordDisplay"></div>
+
+        <div class="actions">
+            <div class="action-card">
+                <div class="action-title">
+                    <div class="action-icon icon-letter">💡</div>
+                    Harf Al
+                    <div class="action-count" id="letterCountDisplay">5</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input-field" id="letterInput" maxlength="1" placeholder="Bir harf girin">
+                </div>
+                <button class="btn btn-warning" onclick="buyLetter()" id="buyLetterBtn">Harf Al</button>
+                <div id="letterMessage"></div>
+            </div>
+
+            <div class="action-card">
+                <div class="action-title">
+                    <div class="action-icon icon-guess">🎯</div>
+                    Kelime Tahmin
+                    <div class="action-count" id="lifeCountDisplay">3</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input-field" id="guessInput" placeholder="Kelimeyi tahmin edin">
+                </div>
+                <button class="btn btn-primary" onclick="guessWord()" id="guessBtn">Tahmin Et</button>
+                <div id="guessMessage"></div>
+            </div>
+        </div>
+
+        <div class="hearts" id="heartsDisplay"></div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-content">
+            <div class="settings-title">⚙️ Oyun Ayarları</div>
+
+            <div class="settings-group">
+                <label class="settings-label">📚 Kategori Seç</label>
+                <div class="category-grid" id="categoryGrid"></div>
+            </div>
+
+            <div class="settings-group">
+                <label class="settings-label">🎮 Zorluk Seviyesi</label>
+                <div class="difficulty-grid" id="difficultyGrid"></div>
+                <div class="difficulty-info" id="difficultyInfo"></div>
+            </div>
+
+            <div class="settings-buttons">
+                <button class="btn-settings btn-start" onclick="startGameFromSettings()">▶️ Oyunu Başlat</button>
+                <button class="btn-settings btn-close-settings" onclick="closeSettings()">✕ Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal" id="gameModal">
+        <div class="modal-content">
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-text" id="modalText"></div>
+            <div class="modal-word" id="modalWord"></div>
+            <button class="btn btn-restart" onclick="openSettings()">⚙️ Ayarlara Dön</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
